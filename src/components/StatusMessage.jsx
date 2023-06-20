@@ -2,11 +2,9 @@ import React from 'react';
 
 const StatusMessage = ({ winner, gamingBoard }) => {
   const { squares, IsXNext } = gamingBoard;
+
   const noMovesLeft = squares.every(squareValue => squareValue != null);
   const nextPlayer = IsXNext ? 'X' : 'O';
-  const statusMessage = winner
-    ? `Winner is ${winner} `
-    : `Next Player is ${nextPlayer}`;
 
   const renderStatusMessage = () => {
     if (winner) {

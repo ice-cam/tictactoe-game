@@ -13,7 +13,7 @@ function App() {
 
   const gamingBoard = history[currentMove];
 
-  const winner = calculateWinner(gamingBoard.squares);
+  const { winner, winningSquares } = calculateWinner(gamingBoard.squares);
   //console.log({ historylength: history.length, currentMove });
 
   const handleSquareClick = clickedPosition => {
@@ -40,7 +40,8 @@ function App() {
       const base = isTraversing
         ? currentHistory.slice(0, currentHistory.indexOf(lastGamingStates) + 1)
         : currentHistory;
-      return currentHistory.concat({
+
+      return base.concat({
         squares: nextSquaresState,
         isXNext: !lastGamingStates.isXNext,
       });
@@ -64,6 +65,7 @@ function App() {
       <Board
         squares={gamingBoard.squares}
         handleSquareClick={handleSquareClick}
+        winningSquares={winningSquares}
       />
 
       <button
